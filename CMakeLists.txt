@@ -15,6 +15,9 @@ target_sources(indicate
             BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src
             FILES
                 src/indicate.cppm
-                src/progress_bar.cppm
-                src/spinner.cppm
+                src/indicate.human_format.cppm
+                src/indicate.progress_bar.cppm
+                src/indicate.spinner.cppm
+                src/indicate.style.cppm
+                src/indicate.util.cppm
 )

@@ -2,6 +2,13 @@ module;
 
 #include <array>
 #include <string>
+#include <cstdio>;
+
+#ifdef _WIN32
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 
 export module indicate.util;
 
@@ -108,5 +115,18 @@ namespace indicate {
         static constexpr Color BrightCyan    {Value::BrightCyan};
         static constexpr Color BrightWhite   {Value::BrightWhite};
     };
+
+    [[nodiscard]] bool is_tty(FILE* f = stdout) noexcept {
+        // this lambda runs exactly once, at first call
+        static const bool cached = [f]() {
+    #ifdef _WIN32
+            return _isatty(_fileno(f)) != 0;
+    #else
+            return ::isatty(::fileno(f)) != 0;
+    #endif
+        }();
+
+        return cached;
+    }
 
 }

@@ -2,7 +2,7 @@ module;
 
 #include <array>
 #include <string>
-#include <cstdio>;
+#include <cstdio>
 
 #ifdef _WIN32
 #include <io.h>
@@ -97,24 +97,26 @@ namespace indicate {
             return bg_codes[static_cast<size_t>(v_)];
         }
 
-        static constexpr Color Default {Value::Default};
-        static constexpr Color Black   {Value::Black};
-        static constexpr Color Red     {Value::Red};
-        static constexpr Color Green   {Value::Green};
-        static constexpr Color Yellow  {Value::Yellow};
-        static constexpr Color Blue    {Value::Blue};
-        static constexpr Color Magenta {Value::Magenta};
-        static constexpr Color Cyan    {Value::Cyan};
-        static constexpr Color White   {Value::White};
-        static constexpr Color BrightBlack   {Value::BrightBlack};
-        static constexpr Color BrightRed     {Value::BrightRed};
-        static constexpr Color BrightGreen   {Value::BrightGreen};
-        static constexpr Color BrightYellow  {Value::BrightYellow};
-        static constexpr Color BrightBlue    {Value::BrightBlue};
-        static constexpr Color BrightMagenta {Value::BrightMagenta};
-        static constexpr Color BrightCyan    {Value::BrightCyan};
-        static constexpr Color BrightWhite   {Value::BrightWhite};
+        static constexpr Color Default()     noexcept { return Color(Value::Default); };
+        static constexpr Color Black()       noexcept { return Color(Value::Black);   };
+        static constexpr Color Red()         noexcept { return Color(Value::Red);     };
+        static constexpr Color Green()       noexcept { return Color(Value::Green);   };
+        static constexpr Color Yellow()      noexcept { return Color(Value::Yellow);  };
+        static constexpr Color Blue()        noexcept { return Color(Value::Blue);    };
+        static constexpr Color Magenta()     noexcept { return Color(Value::Magenta); };
+        static constexpr Color Cyan()        noexcept { return Color(Value::Cyan);    };
+        static constexpr Color White()       noexcept { return Color(Value::White);   };
+        static constexpr Color BrightBlack()   noexcept { return Color(Value::BrightBlack);   };
+        static constexpr Color BrightRed()     noexcept { return Color(Value::BrightRed);     };
+        static constexpr Color BrightGreen()   noexcept { return Color(Value::BrightGreen);   };
+        static constexpr Color BrightYellow()  noexcept { return Color(Value::BrightYellow);  };
+        static constexpr Color BrightBlue()    noexcept { return Color(Value::BrightBlue);    };
+        static constexpr Color BrightMagenta() noexcept { return Color(Value::BrightMagenta); };
+        static constexpr Color BrightCyan()    noexcept { return Color(Value::BrightCyan);    };
+        static constexpr Color BrightWhite()   noexcept { return Color(Value::BrightWhite);   };
+
     };
+
 
     [[nodiscard]] bool is_tty(FILE* f = stdout) noexcept {
         // this lambda runs exactly once, at first call

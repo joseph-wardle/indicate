@@ -11,8 +11,8 @@ constexpr inline std::string_view reset_all = "\x1b[0m";
 namespace indicate {
     export class Style {
     private:
-        Color fg_ = Color::Default;
-        Color bg_ = Color::Default;
+        Color fg_ = Color::Default();
+        Color bg_ = Color::Default();
     public:
         Style() = default;
 

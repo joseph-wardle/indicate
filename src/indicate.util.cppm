@@ -118,7 +118,7 @@ namespace indicate {
     };
 
 
-    [[nodiscard]] bool is_tty(FILE* f = stdout) noexcept {
+    export bool is_tty(FILE* f = stdout) noexcept {
         // this lambda runs exactly once, at first call
         static const bool cached = [f]() {
     #ifdef _WIN32

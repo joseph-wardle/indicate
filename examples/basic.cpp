@@ -1,4 +1,5 @@
 #include <print>
+#include <thread>
 
 import indicate;
 
@@ -18,4 +19,11 @@ int main() {
     std::println("{}", error_style("Error: This is an error message"));
     std::println("{}", fatal_style("Fatal: This is a fatal error message"));
     std::println("This is a normal message without any style");
+    {
+        Spinner spinner;
+        spinner.set_message("Downloading");
+
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+    }
+    std::println("Download complete");
 }

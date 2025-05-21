@@ -5,19 +5,22 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(indicate STATIC)
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API ON)
 
+# Option for examples/tests
+option(BUILD_EXAMPLES "Build example executables" ON)
+#option(BUILD_TESTS    "Build unit tests"       OFF)
 
-target_sources(indicate
-    PUBLIC
-        FILE_SET cxx_modules
-            TYPE CXX_MODULES
-            BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src
-            FILES
-                src/indicate.cppm
-                src/indicate.human_format.cppm
-                src/indicate.progress_bar.cppm
-                src/indicate.spinner.cppm
-                src/indicate.style.cppm
-                src/indicate.util.cppm
-)
+# Always build the library
+add_subdirectory(src)
+
+# Conditionally build examples & tests
+if (BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
+
+#if (BUILD_TESTS)
+#    enable_testing()
+#    add_subdirectory(tests)
+#endif()
